@@ -15,4 +15,4 @@ const getArgv = args => {
 	return res;
 };
 
-module.exports = getArgv;
+export default getArgv;
