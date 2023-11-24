@@ -1,6 +1,6 @@
 import getArgv from './helper/argv.js';
-import { getWeather } from './service/api.service.js';
-import { printError, printHelp, printSuccess } from './service/log.service.js';
+import { getIcon, getWeather } from './service/api.service.js';
+import { printError, printHelp, printSuccess, printWeather } from './service/log.service.js';
 import { TOKEN_DICTIONARY, getKeyValue, saveKeyValue } from './service/storage.service.js';
 
 const saveToken = async token => {
@@ -36,7 +36,7 @@ const startCLI = () => {
 		try {
 			const city = process.env.CITY ?? (await getKeyValue(TOKEN_DICTIONARY.city));
 			const response = await getWeather(city);
-			console.log(response);
+			printWeather(response, getIcon(response.weather[0].icon));
 		} catch (error) {
 			if (error?.response?.status == 404) {
 				printError('City not found');
