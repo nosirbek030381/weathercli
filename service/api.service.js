@@ -17,7 +17,6 @@ const getWeather = async city => {
 			lang: 'en',
 		},
 	});
-	console.log(data);
 	return data;
 };
 
