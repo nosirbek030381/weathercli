@@ -31,7 +31,7 @@ const startCLI = () => {
 		return saveToken(argv.t);
 		// token
 	}
-	getWeather('uzbekistan');
+	getWeather(process.env.CITY ?? 'uzbekistan');
 };
 
 startCLI();
